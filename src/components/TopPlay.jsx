@@ -9,6 +9,7 @@ import { useGetTopChartQuery } from '../redux/services/shazamCore';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
+import Skeleton from './Skeleton';
 
 const TopChartCard = ({
   song,
@@ -79,17 +80,21 @@ const TopPlay = () => {
           </Link>
         </div>
         <div className="flex-flex-col gap-1 mt-4">
-          {topPlays?.map((song, i) => (
-            <TopChartCard
-              song={song}
-              i={i}
-              key={song.key}
-              isPlaying={isPlaying}
-              activeSong={activeSong}
-              handlePlayClick={() => handlePlayClick(song, i)}
-              handlePausePause={handlePauseClick}
-            />
-          ))}
+          {topPlays ? (
+            topPlays?.map((song, i) => (
+              <TopChartCard
+                song={song}
+                i={i}
+                key={song.key}
+                isPlaying={isPlaying}
+                activeSong={activeSong}
+                handlePlayClick={() => handlePlayClick(song, i)}
+                handlePausePause={handlePauseClick}
+              />
+            ))
+          ) : (
+            <Skeleton />
+          )}
         </div>
       </div>
       <div className="w-full flex flex-col mt-8">
@@ -108,21 +113,25 @@ const TopPlay = () => {
           modules={[FreeMode]}
           className="mt-4"
         >
-          {topPlays?.map((song, i) => (
-            <SwiperSlide
-              key={song.key || i}
-              style={{ width: '25%', height: 'auto' }}
-              className="shadow-lg rounded-full animate-slideright"
-            >
-              <Link to={`/artists/${song?.artists[0].adamid}`}>
-                <img
-                  src={song?.images.background}
-                  alt="name"
-                  className="rounded-full w-full object-cover"
-                />
-              </Link>
-            </SwiperSlide>
-          ))}
+          {topPlays ? (
+            topPlays?.map((song, i) => (
+              <SwiperSlide
+                key={song.key || i}
+                style={{ width: '25%', height: 'auto' }}
+                className="shadow-lg rounded-full animate-slideright"
+              >
+                <Link to={`/artists/${song?.artists[0].adamid}`}>
+                  <img
+                    src={song?.images.background}
+                    alt="name"
+                    className="rounded-full w-full object-cover"
+                  />
+                </Link>
+              </SwiperSlide>
+            ))
+          ) : (
+            <Skeleton rounded />
+          )}
         </Swiper>
       </div>
     </div>

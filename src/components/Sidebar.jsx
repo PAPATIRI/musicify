@@ -14,7 +14,6 @@ const NavLinks = () => {
     <nav className="mt-8">
       <NavLink
         to="/"
-        exact
         className="flex flex-row justify-start items-center my-4 text-sm font-medium"
         style={({ isActive }) =>
           isActive
@@ -47,7 +46,7 @@ const NavLinks = () => {
         }
       >
         <HiOutlineHashtag className="w-6 h-6 mr-2" />
-        Top Artists
+        Top Charts
       </NavLink>
     </nav>
   );
