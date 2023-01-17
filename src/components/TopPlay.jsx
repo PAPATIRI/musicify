@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode } from 'swiper';
@@ -7,8 +9,6 @@ import { useGetTopChartQuery } from '../redux/services/shazamCore';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 const TopChartCard = ({
   song,

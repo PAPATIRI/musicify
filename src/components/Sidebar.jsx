@@ -1,25 +1,55 @@
 import { useState } from 'react';
-import { HiOutlineMenu } from 'react-icons/hi';
 import { RiCloseLine } from 'react-icons/ri';
 import { Link, NavLink } from 'react-router-dom';
+import {
+  HiOutlineMenu,
+  HiOutlineHashtag,
+  HiOutlineHome,
+  HiOutlineUserGroup,
+} from 'react-icons/hi';
 import { logo } from '../assets';
-import { links } from '../assets/constants';
 
-const NavLinks = (handleClick) => {
+const NavLinks = () => {
   return (
-    <div className="mt-10">
-      {links.map((link) => (
-        <NavLink
-          key={link.name}
-          to={link.to}
-          className="flex flex-row justify-start items-center my-8 text-sm font-medium text-gray-400 hover:text-cyan-400"
-          onClick={() => handleClick && handleClick()}
-        >
-          <link.icon className="w-6 h-6 mr-2" />
-          {link.name}
-        </NavLink>
-      ))}
-    </div>
+    <nav className="mt-8">
+      <NavLink
+        to="/"
+        exact
+        className="flex flex-row justify-start items-center my-4 text-sm font-medium"
+        style={({ isActive }) =>
+          isActive
+            ? { color: 'rgb(34, 211, 238)' }
+            : { color: 'rgb(156, 163, 175)' }
+        }
+      >
+        <HiOutlineHome className="w-6 h-6 mr-2" />
+        Discover
+      </NavLink>
+      <NavLink
+        to="/top-artists"
+        className="flex flex-row justify-start items-center my-4 text-sm font-medium"
+        style={({ isActive }) =>
+          isActive
+            ? { color: 'rgb(34, 211, 238)' }
+            : { color: 'rgb(156, 163, 175)' }
+        }
+      >
+        <HiOutlineUserGroup className="w-6 h-6 mr-2" />
+        Top Artists
+      </NavLink>
+      <NavLink
+        to="/top-charts"
+        className="flex flex-row justify-start items-center my-4 text-sm font-medium"
+        style={({ isActive }) =>
+          isActive
+            ? { color: 'rgb(34, 211, 238)' }
+            : { color: 'rgb(156, 163, 175)' }
+        }
+      >
+        <HiOutlineHashtag className="w-6 h-6 mr-2" />
+        Top Artists
+      </NavLink>
+    </nav>
   );
 };
 
